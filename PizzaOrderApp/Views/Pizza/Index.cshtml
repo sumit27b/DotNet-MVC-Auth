@@ -1,0 +1,51 @@
+﻿@using PizzaOrderApp.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Pizza</h2>
+
+
+<hr />
+
+@{
+    List<PizzaModel> allpizza = ViewData["pizza"] as List<PizzaModel>;
+}
+<div class="container">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Pizza ID</th>
+                <th>Pizza Name</th>
+                <th>Pizza Price</th>
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                        <th scope="col">Update</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (PizzaModel pizza in allpizza)
+                {
+                        <tr>
+                            <td>@pizza.Id</td>
+                            <td><a href="/pizza/detail/@pizza.Id">@pizza.PizzaName</a></td>
+                            <td>@pizza.PizzaPrice</td>
+                            @{
+
+                                if (Request.IsAuthenticated)
+                                {
+                                    <td><a href="/pizza/update/@pizza.Id" class="btn btn-info">Update</a> </td>
+                                }
+                            }
+                        </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+﻿@using PizzaOrderApp.Models;
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<span class="label label-info"><a href="/pizza/index">Show All Pizza</a></span>
+
+<h2>Detail</h2>
+
+
+@{
+    PizzaModel pizza = ViewData["pizza"] as PizzaModel;
+    <hr />
+    <p> Pizza Name: @pizza.PizzaName</p>
+    <p> Pizza Description: @pizza.PizzaDesc></p>
+    <p> Pizza Type: @pizza.PizzaType</p>
+    <p> Pizza Price: @pizza.PizzaPrice</p>
+}
